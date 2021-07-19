@@ -16,5 +16,5 @@ class MainController extends AbstractController
         ]);
 
     }
-    #[Route('/
+
 }
