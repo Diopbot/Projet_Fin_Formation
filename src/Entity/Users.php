@@ -9,11 +9,15 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use ApiPlatform\Core\Annotation\ApiResource;
+
 
 /**
  * @ORM\Entity(repositoryClass=UsersRepository::class)
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
+#[ApiResource()]
+
 class Users implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
@@ -102,6 +106,11 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->demandes = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->nom.' '.$this->prenom.' '.$this->dateNaissance.' '.$this->lieuNaissance.' '.$this->prenomPere.' '.$this->prenomMere.' '.$this->nomMere;
     }
 
     public function getId(): ?int

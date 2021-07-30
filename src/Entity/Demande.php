@@ -4,10 +4,13 @@ namespace App\Entity;
 
 use App\Repository\DemandeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass=DemandeRepository::class)
  */
+#[ApiResource()]
+
 class Demande
 {
     /**
